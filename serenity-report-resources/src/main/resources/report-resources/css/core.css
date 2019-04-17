@@ -1794,6 +1794,8 @@ ul.second-level-requirements  {
 .cast {
     margin-left: 20px;
     width: 100%;
+    font-size: 12px;
+    font-family:euphemia, verdana, sans-serif;
 }
 
 .cast td {

@@ -67,12 +67,12 @@ public class FreemarkerContext {
                              RequirementsService requirements,
                              IssueTracking issueTracking,
                              String relativeLink) {
-        this(environmentVariables, requirements, issueTracking,relativeLink, TestTag.EMPTY_TAG);
+        this(environmentVariables, requirements, issueTracking, relativeLink, TestTag.EMPTY_TAG);
     }
 
     public Map<String, Object> getBuildContext(TestOutcomes testOutcomes,
-                                             ReportNameProvider reportName,
-                                             boolean useFiltering) {
+                                               ReportNameProvider reportName,
+                                               boolean useFiltering) {
         Map<String, Object> context = new HashMap();
         TagFilter tagFilter = new TagFilter(environmentVariables);
         context.put("testOutcomes", testOutcomes);
@@ -113,19 +113,18 @@ public class FreemarkerContext {
                 .withMaxOf(5));
 
         List<String> tagTypes = Splitter.on(",")
-                                        .trimResults()
-                                        .splitToList(REPORT_TAGTYPES.from(environmentVariables,"feature"));
+                .trimResults()
+                .splitToList(REPORT_TAGTYPES.from(environmentVariables, "feature"));
 
         context.put("coverage", TagCoverage.from(testOutcomes)
-                                           .showingTags(requirements.getTagsOfType(tagTypes))
-                                           .forTagTypes(tagTypes));
+                .showingTags(requirements.getTagsOfType(tagTypes))
+                .forTagTypes(tagTypes));
         context.put("backgroundColor", new BackgroundColor());
 
         testOutcomes.getOutcomes().forEach(
-            testOutcome ->  addTags(testOutcome, context, null)
+                testOutcome -> addTags(testOutcome, context, null)
         );
-
-        context.put("tagResults",TagResults.from(testOutcomes).forAllTags());
+        context.put("tagResults", TagResults.from(testOutcomes).forAllTags());
 
 
         return context;

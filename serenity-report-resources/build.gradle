@@ -1,3 +1,4 @@
+version = 'SOFIST-2.0.9'
 ext {
     projectDescription = 'Serenity Report templates'
 }

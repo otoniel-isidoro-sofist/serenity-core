@@ -185,13 +185,12 @@
                                     </h3>
 
                                     <div class="cast-member collapse" id="castDetails">
-                                        <table class="cast">
-                                            <tr>
+                                        <div class="cast">
                                                 <#list testOutcome.actors as castMember>
-                                                    <td width="${cellWidth}%">
-                                                        <h4>
+                                                    <div width="${cellWidth}%">
+                                                        <h5>
                                                             <i class="fa fa-2x fa-user-o"></i>&nbsp;<span>${castMember.name}</span>
-                                                            <h4>
+                                                            <h6>
                                                                 <p>${formatter.renderDescription(castMember.description!"")}</p>
                                                                 <ul>
                                                     <#if (castMember.hasFacts())>
@@ -213,10 +212,9 @@
                                                         </li>
                                                     </#if>
                                                                 </ul>
-                                                    </td>
+                                                    </div>
                                                 </#list>
-                                            </tr>
-                                        </table>
+                                        </div>
                                     </div>
                                 </div>
                             </td>

@@ -562,23 +562,29 @@
                                                 </div>
                                                 </#if>
 
-                                                <#if tagResults?has_content >
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <h3>Tags</h3>
+<#if tagResults?has_content >
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Tags</h3>
+        <br/><h2>${tagType}:</h2><br/>
+        <#list tagTypes as tagType >
+            <br/><h2>${tagType}:</h2><br/>
+            <#list tagResults as tagResult >
+                <#if tagResult.tag.type == tagType >
+                    <span>
+                        <a href="${tagResult.report}">
+                            <span class="badge"
+                                  style="background-color:${tagResult.color}; margin:1em;padding:4px;"><i
+                                    class="fa fa-tag"></i> ${tagResult.label}&nbsp;&nbsp;&nbsp;${tagResult.count}</span>
+                        </a>
+                    </span>
+                </#if>
+            </#list>
+        </#list>
 
-                                                        <#list tagResults as tagResult >
-                                                        <span>
-                                                            <a href="${tagResult.report}">
-                                                                <span class="badge"
-                                                                      style="background-color:${tagResult.color}; margin:1em;padding:4px;"><i
-                                                                        class="fa fa-tag"></i> ${tagResult.label}&nbsp;&nbsp;&nbsp;${tagResult.count}</span>
-                                                            </a>
-                                                        </span>
-                                                        </#list>
-                                                    </div>
-                                                </div>
-                                                </#if>
+    </div>
+</div>
+</#if>
                                             </div>
                                         </div>
                                         <div id="tests" class="tab-pane fade">
